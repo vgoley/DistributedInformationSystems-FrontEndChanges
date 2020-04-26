@@ -146,6 +146,7 @@
     <Content Include="Controllers\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="img\black-menubar.png" />
+    <Content Include="img\DataModel.jpeg" />
     <Content Include="img\rectangle.png" />
     <Content Include="img\Sirisha.jpg" />
     <Content Include="img\Vikanksha.jpg" />
