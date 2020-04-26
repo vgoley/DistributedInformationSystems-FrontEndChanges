@@ -1,0 +1,83 @@
+﻿@model DistributedInformationSystems.ViewModels.HistoryViewModel
+@{
+    ViewBag.Title = "History";
+}
+
+@using (Html.BeginForm("Filter", "Enrollments", FormMethod.Post, new { myObject = Model }))
+{
+    
+        <h2>Univ. of South Florida (History)</h2>
+        <hr />
+        <p> This data represents percentage of enrollments each school year for each ethnicity type</p>
+        <div class="form-group row">
+            <div class="col-md-3">
+                Select a School Year:  @Html.DropDownListFor(m => m.SelectedSem, Model.pAvailableSchoolYears.Select(schoolYear => new SelectListItem()
+{
+Text = schoolYear.Year,
+Value = schoolYear.Id.ToString()
+}), new { name = "AvailableSchoolYears" })
+
+            </div>
+
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary">Filter</button>
+                <input type="button"
+                       value="Reset" class="btn btn-primary"
+                       onclick="location.href='@Url.Action("History", "Enrollments",new {id=0})'" />
+            </div>
+            <div class="col-md-3"> </div>
+
+
+        </div>
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">School Name</div>
+                <div class="col-md-1">School Year</div>
+                <div class="col-sm-1">Hispanic</div>
+                <div class="col-sm-1">Non-Hispanic</div>
+                <div class="col-sm-1">Asian</div>
+                <div class="col-sm-1">Black / African-American</div>
+                <div class="col-sm-1">Hawaiian / Pacific Islander</div>
+                <div class="col-sm-1">White</div>
+                <div class="col-sm-1">Multi-Racial</div>
+                <div class="col-sm-1">Unknown</div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1"></div>
+            </div>
+            @if (Model.StudentCompHistory.Count > 0)
+            {
+                foreach (var enrollment in Model.StudentCompHistory)
+                {
+                    <div class="row">
+                        <div class="col-md-2">@enrollment.SchoolName.ToString()</div>
+                        <div class="col-sm-1">@enrollment.SchoolYear.ToString()</div>
+                        <div class="col-sm-1">@enrollment.Hispanic.ToString()</div>
+                        <div class="col-sm-1">@enrollment.NonHispanic.ToString()</div>
+                        <div class="col-sm-1">@enrollment.Asian.ToString()</div>
+                        <div class="col-sm-1">@enrollment.AfricanAmerican.ToString()</div>
+                        <div class="col-sm-1">@enrollment.Hawaiian.ToString()</div>
+                        <div class="col-sm-1">@enrollment.White.ToString()</div>
+                        <div class="col-sm-1">@enrollment.MultiRacial.ToString()</div>
+                        <div class="col-sm-1">@enrollment.Unknown.ToString()</div>
+                        <div style="width:4%; float:left">@Html.ActionLink("Edit", "Edit", new { enrollment.Id })</div>
+                        <div style="width:4%; float:left">@Html.ActionLink("Delete", "Delete", new { enrollment.Id }) </div>
+
+                    </div>
+                }
+            }
+            @if (Model.StudentCompHistory.Count == 0)
+            {
+                <div class="row text-center alert">
+                    We couldn't find any history of student composition data at Univ. of South Florida. Click <a href="@Url.Action("GenerateData", null, new { controller = "Enrollments" }, Request.Url.Scheme)">
+                        <span>here</span>
+                    </a> to generate this data from CollegeScoreCard API.
+                </div>
+            }
+
+        </div>
+
+    }
+

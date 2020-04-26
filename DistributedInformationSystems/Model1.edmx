@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EnrollmentsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="SchoolYear">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Year" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudetnCompositionByYear">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hispanic" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="NonHispanic" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="White" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="AfricanAmerican" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Asian" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Hawaiian" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MultiRacial" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Unknown" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SchoolYearId" Type="int" Nullable="false" />
+          <Property Name="SchoolName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityContainer Name="EnrollmentsModelStoreContainer">
+          <EntitySet Name="SchoolYear" EntityType="Self.SchoolYear" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudetnCompositionByYear" EntityType="Self.StudetnCompositionByYear" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EnrollmentsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="SchoolYear">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudetnCompositionByYear">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Hispanic" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="NonHispanic" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="White" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="AfricanAmerican" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Asian" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Hawaiian" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MultiRacial" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Unknown" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SchoolYearId" Type="Int32" Nullable="false" />
+          <Property Name="SchoolName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="EnrollmentsEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SchoolYears" EntityType="Self.SchoolYear" />
+          <EntitySet Name="StudetnCompositionByYears" EntityType="Self.StudetnCompositionByYear" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EnrollmentsModelStoreContainer" CdmEntityContainer="EnrollmentsEntities1">
+          <EntitySetMapping Name="SchoolYears">
+            <EntityTypeMapping TypeName="EnrollmentsModel.SchoolYear">
+              <MappingFragment StoreEntitySet="SchoolYear">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudetnCompositionByYears">
+            <EntityTypeMapping TypeName="EnrollmentsModel.StudetnCompositionByYear">
+              <MappingFragment StoreEntitySet="StudetnCompositionByYear">
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="SchoolYearId" ColumnName="SchoolYearId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Hispanic" ColumnName="Hispanic" />
+                <ScalarProperty Name="NonHispanic" ColumnName="NonHispanic" />
+                <ScalarProperty Name="White" ColumnName="White" />
+                <ScalarProperty Name="AfricanAmerican" ColumnName="AfricanAmerican" />
+                <ScalarProperty Name="Asian" ColumnName="Asian" />
+                <ScalarProperty Name="Hawaiian" ColumnName="Hawaiian" />
+                <ScalarProperty Name="MultiRacial" ColumnName="MultiRacial" />
+                <ScalarProperty Name="Unknown" ColumnName="Unknown" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

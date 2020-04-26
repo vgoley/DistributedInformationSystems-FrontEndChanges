@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Distributed Information Systems</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div id="#Actual" style="        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/img/rectangle.png');">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("DIS", "History", "Enrollments", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class=""><a href="@Url.Action("GenerateData", null, new { controller = "Enrollments" }, Request.Url.Scheme)"><span class="active glyphicon glyphicon-home"></span> Home</a></li>
+                        <li class=""><a href="@Url.Action("History", null, new { controller = "Enrollments" }, Request.Url.Scheme)"><span class="active glyphicon glyphicon-stats"></span> History</a></li>
+                        <li class=""><a href="@Url.Action("About", null, new { controller = "Enrollments" }, Request.Url.Scheme)"><span class="active glyphicon glyphicon-user"></span> About</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Distributed Information Systems</p>
+            </footer>
+        </div>
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        </div>
+</body>
+</html>

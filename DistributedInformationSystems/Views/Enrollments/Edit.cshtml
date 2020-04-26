@@ -1,0 +1,51 @@
+﻿@model DistributedInformationSystems.Models.StudentComposition
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit (@Model.SchoolYear)</h2>
+@using (Html.BeginForm("Update", "Enrollments", FormMethod.Post, new { myObject = Model }))
+{
+    <div class="form-group">
+        <div>@Html.LabelFor(m => m.SchoolName)</div>
+        <div>@Html.TextBoxFor(m => m.SchoolName)                </div>
+    </div>
+    <div class="form-group">
+        <div>@Html.LabelFor(m => m.Hispanic)</div>
+        <div>@Html.TextBoxFor(m => m.Hispanic)                </div>
+    </div>
+    <div class="form-group">
+        <div>@Html.LabelFor(m => m.NonHispanic)</div>
+        <div>@Html.TextBoxFor(m => m.NonHispanic)                </div>
+    </div>
+    <div class="form-group">
+        <div>@Html.LabelFor(m => m.Asian)</div>
+        <div>@Html.TextBoxFor(m => m.Asian)                   </div>
+    </div>
+    <div class="form-group">
+        <div>@Html.LabelFor(m => m.AfricanAmerican)</div>
+        <div>@Html.TextBoxFor(m => m.AfricanAmerican)         </div>
+    </div>
+    <div class="form-group">
+        <div>@Html.LabelFor(m => m.White)</div>
+        <div>@Html.TextBoxFor(m => m.White)          </div>
+    </div>
+    <div class="form-group">
+        <div>@Html.LabelFor(m => m.Hawaiian)</div>
+        <div>@Html.TextBoxFor(m => m.Hawaiian) </div>
+    </div>
+
+    <div class="form-group">
+        <div>@Html.LabelFor(m => m.MultiRacial)</div>
+        <div>@Html.TextBoxFor(m => m.MultiRacial)</div>
+    </div>
+    <div class="form-group">
+        <div>@Html.LabelFor(m => m.Unknown)</div>
+        <div>@Html.TextBoxFor(m => m.Unknown)</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <input class="btn btn-primary" type="button" value="Cancel" onclick="location.href='@Url.Action("History", "Enrollments")'" />
+
+    @Html.HiddenFor(m => m.Id)
+
+}

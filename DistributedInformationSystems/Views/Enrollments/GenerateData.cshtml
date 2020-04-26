@@ -1,0 +1,33 @@
+﻿@model DistributedInformationSystems.ViewModels.GenerateDataViewModel
+@{
+    ViewBag.Title = "GenerateEnrollmentsData";
+}
+
+<h2>Enrollments Data</h2>
+<hr />
+<p>
+    Welcome to the application where you can view enrollments history of multiple colleges.
+</p>
+
+<i>Use this form to popualte your database with enrollment data from the CollegeScoreCard api</i>
+@using (Html.BeginForm("Generate", "Enrollments", FormMethod.Post, new { id = "GenerateForm" }))
+{
+    if (!Model.RecordsAvailable)
+    {
+        <div class="form-group">
+            Please hit Generate to get the data for school years 2012 through 2020 from CollegeScoreCard API else click on History button to view the data that has been loaded.
+        </div>
+        <button type="submit" class="btn btn-primary">Generate</button>
+    }
+    if (Model.RecordsAvailable)
+    {
+        <div class="form-group">
+            We find that records already have been generated. Please delete your existing data from the History form before you try generating data.
+        </div>
+    }
+    @Html.HiddenFor(m => m.SelectedSchoolYear)
+    <input class="btn btn-primary" type="button" value="History" onclick="location.href='@Url.Action("History", "Enrollments")'" />
+
+}
+
+<br />
